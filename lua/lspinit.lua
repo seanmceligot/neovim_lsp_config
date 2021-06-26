@@ -46,4 +46,12 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
+languages = {'pyright', 'rust_analyzer', 'bashls', 'dockerls'}
+for i = 1, #languages do
+	server = languages[i]
+	if nvim_lsp[server] then
+		nvim_lsp[server].setup{on_attach =  on_attach}
+	end
+end
+
 return nvim_lsp, on_attach
